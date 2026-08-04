@@ -138,8 +138,6 @@ jobs:
             ${{ env.IMAGE }}:${{ env.PG_CODENAME }}
             ${{ env.IMAGE }}:${{ env.PG_MAJOR }}-${{ env.PG_CODENAME }}
             ${{ env.IMAGE }}:${{ env.POSTGRES_VERSION }}-${{ env.PG_CODENAME }}
-          cache-from: type=registry,ref=${{ env.IMAGE }}:buildcache
-          cache-to: type=registry,ref=${{ env.IMAGE }}:buildcache,mode=max
           push: true
 
       - name: 更新 versions.txt
