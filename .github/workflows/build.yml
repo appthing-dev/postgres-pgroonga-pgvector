@@ -138,6 +138,7 @@ jobs:
             ${{ env.IMAGE }}:${{ env.PG_CODENAME }}
             ${{ env.IMAGE }}:${{ env.PG_MAJOR }}-${{ env.PG_CODENAME }}
             ${{ env.IMAGE }}:${{ env.POSTGRES_VERSION }}-${{ env.PG_CODENAME }}
+          provenance: false
           push: true
 
       - name: 更新 versions.txt

@@ -71,6 +71,10 @@ workflow 并勾选 force 强制重建, 或直接修改 Dockerfile 推送触发�
 
 ## 注意事项
 
+- **不要在 ghcr 包页面删除 sha256:hash 格式的版本条目**: 每个 tag(如 `latest`)的索引
+  会引用平台子清单, 这些子清单在包页面上以 `sha256:...` 形式显示为独立版本。
+  删掉后 tag 变成"悬空索引", `docker pull` 会报 `manifest unknown` / `not found`。
+  需要清理时只删明确无用的旧版本, 或者直接靠重新构建覆盖。
 - **pgroonga 对新 PostgreSQL 大版本的支持可能滞后**: 如果 postgres 发布新大版本而
   groonga apt 源还没有对应的 `postgresql-<major>-pgdg-pgroonga` 包, workflow 会报错中止,
   versions.txt 保持原样, 镜像不变; 等 pgroonga 跟上后每天会自动恢复。

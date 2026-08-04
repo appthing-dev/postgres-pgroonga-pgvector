@@ -5,6 +5,7 @@
 #   - pgvector/pgvector Dockerfile (https://github.com/pgvector/pgvector)
 # 定制: 基础镜像 postgres:18-trixie -> postgres:18.4-trixie, PG_MAJOR=17 -> 18, bookworm -> trixie
 # 版本通过 build-arg 传入(CI 自动检查上游后覆盖), 默认值与 versions.txt 保持一致
+# 注意: 修改此文件会触发 GitHub Actions 重新构建并推送镜像
 
 ARG PG_VERSION=18.4
 ARG PG_CODENAME=trixie
