@@ -104,6 +104,7 @@ jobs:
           echo "need_build=$need" >> "$GITHUB_OUTPUT"
           echo "POSTGRES_VERSION=$POSTGRES_VERSION" >> "$GITHUB_ENV"
           echo "PG_MAJOR=${POSTGRES_VERSION%%.*}" >> "$GITHUB_ENV"
+          echo "PG_CODENAME=$POSTGRES_CODENAME" >> "$GITHUB_ENV"
           echo "PGROONGA_VERSION=$PGROONGA_VERSION" >> "$GITHUB_ENV"
           echo "PGVECTOR_VERSION=$PGVECTOR_VERSION" >> "$GITHUB_ENV"
 
@@ -132,8 +133,11 @@ jobs:
             PGVECTOR_VERSION=${{ env.PGVECTOR_VERSION }}
           tags: |
             ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ env.PG_MAJOR }}
             ${{ env.IMAGE }}:${{ env.POSTGRES_VERSION }}
-            ${{ env.IMAGE }}:${{ env.POSTGRES_VERSION }}-trixie
+            ${{ env.IMAGE }}:${{ env.PG_CODENAME }}
+            ${{ env.IMAGE }}:${{ env.PG_MAJOR }}-${{ env.PG_CODENAME }}
+            ${{ env.IMAGE }}:${{ env.POSTGRES_VERSION }}-${{ env.PG_CODENAME }}
           cache-from: type=registry,ref=${{ env.IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.IMAGE }}:buildcache,mode=max
           push: true
@@ -146,6 +150,7 @@ jobs:
           cat > versions.txt <<'EOF'
           # postgres-pgroonga-pgvector 构建版本记录 (由 GitHub Actions 自动更新, 请勿手改)
           POSTGRES_VERSION=${{ env.POSTGRES_VERSION }}
+          POSTGRES_CODENAME=${{ env.PG_CODENAME }}
           PGROONGA_VERSION=${{ env.PGROONGA_VERSION }}
           PGVECTOR_VERSION=${{ env.PGVECTOR_VERSION }}
           EOF

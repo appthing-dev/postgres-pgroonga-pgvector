@@ -14,8 +14,11 @@ GitHub Actions 每天自动检查三个上游源, 有新版本就自动重新构
 | tag | 含义 |
 |---|---|
 | `latest` | 跟随 `postgres:latest` |
-| `18.4` | 对应 postgres 小版本 |
-| `18.4-trixie` | 对应 postgres 基础镜像 tag |
+| `18` | 大版本号 |
+| `18.4` | 小版本号 |
+| `trixie` | 基础系统 codename |
+| `18-trixie` | 大版本 + 系统 |
+| `18.4-trixie` | 小版本 + 系统 |
 
 > 首次推送后 ghcr 包默认 **private**。需要公开时, 在
 > https://github.com/users/appthing-dev/packages/container/package/postgres-pgroonga-pgvector
