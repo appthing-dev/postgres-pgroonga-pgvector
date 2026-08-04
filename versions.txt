@@ -1,0 +1,4 @@
+# postgres-pgroonga-pgvector 构建版本记录 (由 GitHub Actions 自动更新, 请勿手改)
+POSTGRES_VERSION=18.4
+PGROONGA_VERSION=4.0.8-1
+PGVECTOR_VERSION=0.8.6
